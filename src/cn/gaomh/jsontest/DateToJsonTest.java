@@ -1,5 +1,6 @@
 package cn.gaomh.jsontest;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -47,8 +48,15 @@ public class DateToJsonTest {
 		Date updateTime = fromJson.getUpdateTime();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String format = sdf.format(updateTime);
-		
+		String current = System.currentTimeMillis()+"";
 		System.out.println("format : "+format);
+		try {
+			Date parse = sdf.parse(current);
+			String format2 = sdf.format(parse);
+			System.out.println("format2 : "+ format2);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
